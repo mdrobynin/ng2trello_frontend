@@ -1,3 +1,20 @@
-<div class="app-login">
-
+<div class="app-login-container">
+  <div class="app-login">
+    <div class="app-login-title">
+      <span class="app-login-title-text">Login</span>
+    </div>
+    <div class="app-login-username">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Login" [(ngModel)]="username">
+      </mat-form-field>
+    </div>
+    <div class="app-login-password">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password" [(ngModel)]="password">
+      </mat-form-field>
+    </div>
+    <div class="app-login-button">
+      <button mat-raised-button color="primary" (click)="performLogin()">Login</button>
+    </div>
+  </div>
 </div>

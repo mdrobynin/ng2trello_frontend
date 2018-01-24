@@ -1,3 +1,20 @@
-<div class="app-register">
-
+<div class="app-register-container">
+  <div class="app-register">
+    <div class="app-register-title">
+      <span class="app-login-title-text">Register</span>
+    </div>
+    <div class="app-register-username">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Login" [(ngModel)]="username">
+      </mat-form-field>
+    </div>
+    <div class="app-register-password">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password" [(ngModel)]="password">
+      </mat-form-field>
+    </div>
+    <div class="app-register-button">
+      <button mat-raised-button color="primary" (click)="performRegister()">Register</button>
+    </div>
+  </div>
 </div>

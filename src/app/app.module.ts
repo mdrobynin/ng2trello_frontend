@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared.module';
 import { ComponentsModule } from './components/components.module';
 import { ServicesModule } from './services/services.module';
+import { PagesModule } from './pages/pages.module';
 
 import { AppComponent } from './app.component';
 
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     HttpClientModule,
+    PagesModule,
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,

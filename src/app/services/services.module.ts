@@ -8,6 +8,8 @@ import { ModalService } from './modal.service';
 import { TeamsService } from './teams.service';
 import { UsersService } from './users.service';
 import { ProgressBarService } from './progress-bar.service';
+import { LocalStorageService } from './local-storage.service';
+
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { ProgressBarService } from './progress-bar.service';
     ModalService,
     TeamsService,
     UsersService,
-    ProgressBarService
+    ProgressBarService,
+    LocalStorageService
   ]
 })
 export class ServicesModule { }

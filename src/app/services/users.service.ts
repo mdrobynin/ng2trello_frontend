@@ -6,9 +6,9 @@ import { environment } from '../../environments/environment';
 import { HttpResponse } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
-import {IStatusResponse} from '../interfaces/IStatusResponse.interface';
-import {LocalStorageService} from './local-storage.service';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { IStatusResponse } from '../interfaces/IStatusResponse.interface';
+import { LocalStorageService } from './local-storage.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class UsersService {
@@ -28,8 +28,9 @@ export class UsersService {
     return this.transportService.post(config)
       .map((res: HttpResponse<any>) => {
         if (res && res.body) {
-          this.localStorageService.writeJwt(res.body.token);
-          return <IStatusResponse> res.body;
+          const ans = <IStatusResponse> res.body;
+          this.localStorageService.writeJwt(ans.Token);
+          return ans;
         }
       });
   }
@@ -42,21 +43,22 @@ export class UsersService {
     return this.transportService.post(config)
       .map((res: HttpResponse<any>) => {
         if (res && res.body) {
-          this.localStorageService.writeJwt(res.body.token);
-          return <IStatusResponse> res.body;
+          const ans = <IStatusResponse> res.body;
+          this.localStorageService.writeJwt(ans.Token);
+          return ans;
         }
       });
   }
 
-  public getData(): Observable<IUser> {
+  public getData(): void {
     const token = this.localStorageService.getJwt();
     if (!!token) {
       const config = {
         url: `${environment.account}/data`,
-        token
+        body: {token}
       };
-      return this.transportService.post(config)
-        .map((res: HttpResponse<any>) => {
+      this.transportService.post(config)
+        .subscribe((res: HttpResponse<any>) => {
           if (res && res.body) {
             const user = <IUser> res.body;
             this.currentUser.next(user);
@@ -64,7 +66,6 @@ export class UsersService {
           }
         });
     }
-    return new Observable<IUser>();
   }
 
   public logout(): void {
