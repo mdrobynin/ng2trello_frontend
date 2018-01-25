@@ -9,6 +9,7 @@ import { TeamsService } from './teams.service';
 import { UsersService } from './users.service';
 import { ProgressBarService } from './progress-bar.service';
 import { LocalStorageService } from './local-storage.service';
+import {BoardService} from './board.service';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LocalStorageService } from './local-storage.service';
     TeamsService,
     UsersService,
     ProgressBarService,
-    LocalStorageService
+    LocalStorageService,
+    BoardService
   ]
 })
 export class ServicesModule { }

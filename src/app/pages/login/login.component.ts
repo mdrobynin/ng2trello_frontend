@@ -22,12 +22,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.usersService.login(this.username, this.password).subscribe((res: IStatusResponse) => {
       if (res && res.Status) {
         this.usersService.getData();
+        this.router.navigate(['/main']);
       }
     });
   }
 
   ngOnInit() {
-    this.usersService.user.subscribe(console.log);
+
   }
 
   ngOnDestroy(): void {

@@ -1,0 +1,14 @@
+.app-board {
+  margin: 5px;
+  display: flex;
+
+  .app-board-title {
+    flex: 0 0 auto;
+  }
+  .app-board-spacer {
+    flex: 1;
+  }
+  .app-board-button {
+    flex: 0;
+  }
+}

@@ -1,5 +1,5 @@
 <div class="app-register-container">
-  <div class="app-register">
+  <mat-card class="app-register">
     <div class="app-register-title">
       <span class="app-login-title-text">Register</span>
     </div>
@@ -13,8 +13,16 @@
         <input matInput placeholder="Password" [(ngModel)]="password">
       </mat-form-field>
     </div>
+    <div class="app-register-password">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Repeat Password" [(ngModel)]="password1">
+      </mat-form-field>
+    </div>
     <div class="app-register-button">
       <button mat-raised-button color="primary" (click)="performRegister()">Register</button>
     </div>
-  </div>
+    <div class="app-register-redirect-text">
+      <button mat-button color="primary" (click)="redirectToLogin()">Already have an account?</button>
+    </div>
+  </mat-card>
 </div>

@@ -1,14 +1,21 @@
-#app-container {
+.app-container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 
-  #app-navbar {
+  .app-navbar {
     flex: 0 1 auto;
   }
 
-  #app-content {
-    flex: 1 1 auto;
+  .app-content {
+    flex: 1;
+  }
+
+  .app-footer {
+    flex: 0 1 auto;
   }
 }

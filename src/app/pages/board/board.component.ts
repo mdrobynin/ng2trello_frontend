@@ -6,33 +6,18 @@ import {Router} from '@angular/router';
 import {paths} from '../../constants';
 
 @Component({
-  selector: 'app-boards-container',
-  templateUrl: './boards.component.html',
-  styleUrls: ['./boards.component.scss']
+  selector: 'app-board',
+  templateUrl: './board.component.html',
+  styleUrls: ['./board.component.scss']
 })
-export class BoardsComponent implements OnInit, OnDestroy  {
-  public boards: IBoard[] = [];
+export class BoardComponent implements OnInit, OnDestroy  {
   private subscriptions: Subscription[] = [];
   constructor(private boardsService: BoardService, private router: Router) { }
 
   ngOnInit() {
-    this.getBoards();
+
   }
 
-  public redirectToBoardCreation(): void {
-    this.router.navigate(['/' + paths.createBoard]);
-  }
-
-  public boardDeletedHandler(): void {
-    this.getBoards();
-  }
-
-  private getBoards(): void {
-    const sub = this.boardsService.getAllBoards().subscribe((boards: IBoard[]) => {
-      this.boards = boards;
-    });
-    this.subscriptions.push(sub);
-  }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub: Subscription) => {

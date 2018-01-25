@@ -1,3 +1,12 @@
-<div class="app-boards">
-
+<div class="app-boards-container">
+  <div class="app-boards">
+    <app-board-preview *ngFor="let board of boards"
+                       [board]="board"
+                       (boardDeleted)="boardDeletedHandler()"></app-board-preview>
+  </div>
+  <div class="app-boards-add-button">
+    <button mat-fab (click)="redirectToBoardCreation()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

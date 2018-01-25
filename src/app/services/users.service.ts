@@ -70,5 +70,6 @@ export class UsersService {
 
   public logout(): void {
     this.localStorageService.deleteItem('token');
+    this.currentUser.next(undefined);
   }
 }

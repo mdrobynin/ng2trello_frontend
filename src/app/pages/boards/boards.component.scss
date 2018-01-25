@@ -1,0 +1,15 @@
+.app-boards-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .app-boards {
+    width: 60%;
+  }
+  .app-boards-add-button {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+  }
+}

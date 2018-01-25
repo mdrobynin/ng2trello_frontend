@@ -1,0 +1,9 @@
+<mat-card class="app-board">
+  <div class="app-board-title">
+    <a mat-button routerLink="/board/{{board.Id}}">{{board.Title}}</a>
+  </div>
+  <div class="app-board-spacer"></div>
+  <div class="app-board-button">
+    <button mat-button (click)="deleteBoard()"><mat-icon>delete</mat-icon></button>
+  </div>
+</mat-card>

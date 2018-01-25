@@ -1,4 +1,4 @@
-.app-login-container {
+.app-create-board-container {
   align-self: center;
   justify-self: center;
   display: flex;
@@ -6,23 +6,20 @@
   align-items: center;
   height: 100%;
 
-  .app-login {
+  .app-create-board {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    .app-login-title {
+    .app-create-board-title {
       font-size: 30px;
       margin: 5px;
     }
-    .app-login-username {
+    .app-create-board-name {
       margin: 5px;
     }
-    .app-login-password {
-      margin: 5px;
-    }
-    .app-login-button {
+    .app-create-board-button {
       margin: 5px;
     }
   }

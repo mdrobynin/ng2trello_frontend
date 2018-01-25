@@ -1,0 +1,15 @@
+<div class="app-create-board-container">
+  <mat-card class="app-create-board">
+    <div class="app-create-board-title">
+      <span class="app-create-board-title-text">Board Creation</span>
+    </div>
+    <div class="app-create-board-name">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Board Title" [(ngModel)]="boardTitle">
+      </mat-form-field>
+    </div>
+    <div class="app-create-board-button">
+      <button mat-raised-button color="primary" (click)="createBoard()">Create</button>
+    </div>
+  </mat-card>
+</div>

@@ -6,27 +6,48 @@ import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ErrorComponent } from './pages/error/error.component';
+import {ProfileComponent} from './pages/profile/profile.component';
+import {TeamsComponent} from './pages/teams/teams.component';
+import {CreateBoardComponent} from './pages/create-board/create-board.component';
+import {paths} from './constants';
+import {BoardComponent} from './pages/board/board.component';
 
 const appRoutes: Routes = [
   {
-    path: 'boards',
+    path: paths.boards,
     component: BoardsComponent
   },
   {
-    path: 'login',
+    path: `${paths.board}/:id`,
+    component: BoardComponent
+  },
+  {
+    path: paths.profile,
+    component: ProfileComponent
+  },
+  {
+    path: paths.login,
     component: LoginComponent
   },
   {
-    path: 'register',
+    path: paths.createBoard,
+    component: CreateBoardComponent
+  },
+  {
+    path: paths.register,
     component: RegisterComponent
   },
   {
-    path: 'main',
+    path: paths.teams,
+    component: TeamsComponent
+  },
+  {
+    path: paths.main,
     component: MainComponent
   },
   {
     path: '',
-    redirectTo: '/main',
+    redirectTo: `/${paths.main}`,
     pathMatch: 'full'
   },
   {

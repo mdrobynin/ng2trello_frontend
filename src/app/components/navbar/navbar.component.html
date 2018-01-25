@@ -1,6 +1,12 @@
 <mat-toolbar color="primary">
   <a mat-button routerLink="/main">Main</a>
   <a mat-button routerLink="/boards">Boards</a>
+  <a mat-button routerLink="/teams">Teams</a>
+
   <span class="example-spacer"></span>
-  <a mat-button routerLink="/login">Login</a>
+
+  <a mat-button routerLink="/login" *ngIf="!user">Login</a>
+  <a mat-button routerLink="/register" *ngIf="!user">Register</a>
+  <a mat-button (click)="logout()" *ngIf="!!user">Logout</a>
+  <a mat-button routerLink="/profile" *ngIf="!!user">{{user.Username}}</a>
 </mat-toolbar>
