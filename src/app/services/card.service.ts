@@ -44,6 +44,16 @@ export class CardService {
             });
     }
 
+    getCardsByColumnId(columnid: number): Observable<ICard[]> {
+        const config = {
+            url: `${environment.column}/${columnid}/cards`
+        }
+        return this.transport.post(config)
+            .map((res: HttpResponse<any>) => {
+                return <ICard[]>res.body;
+            });
+    }
+
     addCard(card: ICard): Observable<IStatusResponse> {
         const config = {
             url: `${environment.card}`,

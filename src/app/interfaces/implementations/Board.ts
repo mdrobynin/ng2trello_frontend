@@ -1,4 +1,4 @@
-import {IBoard} from '../IBoard.interface';
+import { IBoard } from '../IBoard.interface';
 
 export class Board implements IBoard {
   Id: number;

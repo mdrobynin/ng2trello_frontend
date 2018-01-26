@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {BoardService} from '../../services/board.service';
 import {Router} from '@angular/router';
 import {paths} from '../../constants';
+import {Board} from '../../interfaces/implementations/Board';
 
 @Component({
   selector: 'app-boards-container',
@@ -16,7 +17,10 @@ export class BoardsComponent implements OnInit, OnDestroy  {
   constructor(private boardsService: BoardService, private router: Router) { }
 
   ngOnInit() {
-    this.getBoards();
+    const board = new Board("example board");
+    board.Id = 123;
+    this.boards.push(board)
+    //this.getBoards();
   }
 
   public redirectToBoardCreation(): void {
