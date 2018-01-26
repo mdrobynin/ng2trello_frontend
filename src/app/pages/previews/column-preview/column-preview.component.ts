@@ -21,6 +21,7 @@ export class ColumnPreviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.cards.push(new Card("example card", 1, 1));
+    this.cards.push(new Card("example card 2", 1, 1));
     this.column = new Column("example column", 1);
     //this.getColumn();
   }

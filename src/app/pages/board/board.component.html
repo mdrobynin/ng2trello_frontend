@@ -1,3 +1,3 @@
-<p>
-  board works!
-</p>
+<div class="app-board">
+  <app-column-preview *ngFor="let columnId of board.ColumnIds" [columnId]="columnId"></app-column-preview>
+</div>

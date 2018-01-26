@@ -11,6 +11,8 @@ import { ProgressBarService } from './progress-bar.service';
 import { LocalStorageService } from './local-storage.service';
 import { BoardService } from './board.service';
 import { CommentService } from './comment.service';
+import { ColumnService } from './column.service';
+import { CardService } from './card.service';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { CommentService } from './comment.service';
     ProgressBarService,
     LocalStorageService,
     BoardService,
-    CommentService
+    CommentService,
+    ColumnService,
+    CardService
   ]
 })
 export class ServicesModule { }
