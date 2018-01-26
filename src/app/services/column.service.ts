@@ -7,6 +7,7 @@ import { HttpResponse } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import {IStatusResponse} from '../interfaces/IStatusResponse.interface';
+import { paths } from '../constants';
 
 @Injectable()
 export class ColumnService {
@@ -36,9 +37,9 @@ export class ColumnService {
 
     getColumnsByBoardId(boardid: number): Observable<IColumn[]> {
         const config = {
-            url: `${environment.column}/${boardid}`
+            url: `${environment.board}/${boardid}/${paths.columns}`
         }
-        return this.transport.post(config)
+        return this.transport.get(config)
             .map((res: HttpResponse<any>) => {
                 return <IColumn[]>res.body;
             });

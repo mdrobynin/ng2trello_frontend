@@ -9,8 +9,8 @@ import { TeamsService } from './teams.service';
 import { UsersService } from './users.service';
 import { ProgressBarService } from './progress-bar.service';
 import { LocalStorageService } from './local-storage.service';
-import {BoardService} from './board.service';
-
+import { BoardService } from './board.service';
+import { CommentService } from './comment.service';
 
 @NgModule({
   imports: [
@@ -25,7 +25,8 @@ import {BoardService} from './board.service';
     UsersService,
     ProgressBarService,
     LocalStorageService,
-    BoardService
+    BoardService,
+    CommentService
   ]
 })
 export class ServicesModule { }

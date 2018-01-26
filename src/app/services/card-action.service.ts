@@ -5,6 +5,7 @@ import { TransportService } from './transport.service';
 import { environment } from '../../environments/environment';
 import { HttpResponse } from '@angular/common/http';
 import { IStatusResponse } from '../interfaces/IStatusResponse.interface';
+import { paths } from '../constants';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/find';
@@ -36,7 +37,7 @@ export class CardActionService {
 
     getCardActionsByCardId(cardid: number): Observable<ICardAction[]> {
         const config = {
-            url: `${environment.cardAction}/${cardid}`
+            url: `${environment.card}/${cardid}/${paths.cardActions}`
         }
         return this.transport.post(config)
             .map((res: HttpResponse<any>) => {

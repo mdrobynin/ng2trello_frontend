@@ -6,5 +6,11 @@ export const paths = {
   register: 'register',
   teams: 'teams',
   main: 'main',
-  board: 'board'
+  board: 'board',
+  createCard: 'create-card',
+  createColumn: 'create-column',
+  cards: 'cards',
+  columns: 'columns',
+  cardActions: 'cardactions',
+  comments: 'comments'
 }

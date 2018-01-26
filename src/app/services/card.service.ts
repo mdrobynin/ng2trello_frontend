@@ -5,6 +5,7 @@ import { TransportService } from './transport.service';
 import { environment } from '../../environments/environment';
 import { HttpResponse } from '@angular/common/http';
 import { IStatusResponse } from '../interfaces/IStatusResponse.interface';
+import { paths } from '../constants';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/find';
@@ -36,9 +37,9 @@ export class CardService {
 
     getCardsByBoardId(boardid: number): Observable<ICard[]> {
         const config = {
-            url: `${environment.card}/${boardid}`
+            url: `${environment.board}/${boardid}/${paths.cards}`
         }
-        return this.transport.post(config)
+        return this.transport.get(config)
             .map((res: HttpResponse<any>) => {
                 return <ICard[]>res.body;
             });
@@ -46,9 +47,9 @@ export class CardService {
 
     getCardsByColumnId(columnid: number): Observable<ICard[]> {
         const config = {
-            url: `${environment.column}/${columnid}/cards`
+            url: `${environment.column}/${columnid}/${paths.cards}`
         }
-        return this.transport.post(config)
+        return this.transport.get(config)
             .map((res: HttpResponse<any>) => {
                 return <ICard[]>res.body;
             });
