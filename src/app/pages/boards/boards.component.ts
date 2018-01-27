@@ -17,10 +17,7 @@ export class BoardsComponent implements OnInit, OnDestroy  {
   constructor(private boardsService: BoardService, private router: Router) { }
 
   ngOnInit() {
-    const board = new Board("example board");
-    board.Id = 123;
-    this.boards.push(board)
-    //this.getBoards();
+    this.getBoards();
   }
 
   public redirectToBoardCreation(): void {

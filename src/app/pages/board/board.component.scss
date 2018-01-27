@@ -4,4 +4,19 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+
+  .app-board-title {
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .app-board-add-button {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+  }
 }

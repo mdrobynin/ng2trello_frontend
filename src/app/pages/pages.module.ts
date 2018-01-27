@@ -14,6 +14,7 @@ import { CreateBoardComponent } from './create-board/create-board.component';
 import { BoardComponent } from './board/board.component';
 import { ColumnPreviewComponent } from './previews/column-preview/column-preview.component';
 import { CardPreviewComponent } from './previews/card-preview/card-preview.component';
+import {CreateColumnComponent} from './create-column/create-column.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { CardPreviewComponent } from './previews/card-preview/card-preview.compo
     CreateBoardComponent,
     BoardComponent,
     ColumnPreviewComponent,
-    CardPreviewComponent
+    CardPreviewComponent,
+    CreateColumnComponent
   ],
   exports: [
     ErrorComponent,
@@ -45,7 +47,8 @@ import { CardPreviewComponent } from './previews/card-preview/card-preview.compo
     BoardPreviewComponent,
     CreateBoardComponent,
     BoardComponent,
-    ColumnPreviewComponent
+    ColumnPreviewComponent,
+    CreateColumnComponent
   ]
 })
 export class PagesModule { }

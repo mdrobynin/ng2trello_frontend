@@ -1,3 +1,15 @@
 <div class="app-board">
-  <app-column-preview *ngFor="let columnId of board.ColumnIds" [columnId]="columnId"></app-column-preview>
+  <div *ngIf="!!board" class="app-board-title">
+    {{board.Title}}
+  </div>
+  <ng-template *ngIf="!!board">
+    <app-column-preview
+      *ngFor="let columnId of board.ColumnIds"
+      [columnId]="columnId"></app-column-preview>
+  </ng-template>
+  <div class="app-board-add-button">
+    <button mat-fab (click)="redirectToColumnCreation()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>

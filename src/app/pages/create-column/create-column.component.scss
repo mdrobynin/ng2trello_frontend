@@ -1,0 +1,27 @@
+.app-create-column-container {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .app-create-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .app-create-column-title {
+      font-size: 30px;
+      margin: 5px;
+    }
+    .app-create-column-name {
+      margin: 5px;
+    }
+    .app-create-column-button {
+      margin: 5px;
+    }
+  }
+}
+

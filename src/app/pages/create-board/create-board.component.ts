@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {Router} from '@angular/router';
 import {IBoard} from '../../interfaces/IBoard.interface';
 import {Board} from '../../interfaces/implementations/Board';
+import {paths} from '../../constants';
 
 @Component({
   selector: 'app-create-board',
@@ -23,7 +24,7 @@ export class CreateBoardComponent implements OnInit, OnDestroy  {
     if (this.boardTitle.length > 0) {
       const board = new Board(this.boardTitle);
       this.boardsService.addBoard(board).subscribe(() => {
-        this.router.navigate(['/boards']);
+        this.router.navigate(['/' + paths.boards]);
       });
     }
   }

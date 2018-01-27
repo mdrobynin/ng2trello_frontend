@@ -20,26 +20,27 @@ export class ColumnPreviewComponent implements OnInit, OnDestroy {
   constructor(private columnService: ColumnService, private cardService: CardService) { }
 
   ngOnInit() {
-    this.cards.push(new Card("example card", 1, 1));
-    this.cards.push(new Card("example card 2", 1, 1));
-    this.column = new Column("example column", 1);
-    //this.getColumn();
+    console.log(this.columnId);
+    this.getColumn();
   }
 
   private getColumn(): void {
     const columnSub = this.columnService.getColumnById(this.columnId).subscribe((column: IColumn) => {
       this.column = column;
-      if (!!column) {
-        //use column ID here
-        const cardsSub = this.cardService.getCardsByColumnId(this.columnId).subscribe((cards: ICard[]) => {
-          this.cards = cards;
-        });
-        this.subscriptions.push(cardsSub);
-      }
+      this.getCardsByColumnId();
     });
     this.subscriptions.push(columnSub);
   }
-  
+
+  private getCardsByColumnId(): void {
+    if (!!this.column) {
+      const cardsSub = this.cardService.getCardsByColumnId(this.columnId).subscribe((cards: ICard[]) => {
+        this.cards = cards;
+      });
+      this.subscriptions.push(cardsSub);
+    }
+  }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub: Subscription) => {
       sub.unsubscribe();

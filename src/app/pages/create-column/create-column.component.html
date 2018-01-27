@@ -1,0 +1,15 @@
+<div class="app-create-column-container">
+  <mat-card class="app-create-column">
+    <div class="app-create-column-title">
+      <span class="app-create-column-title-text">Column Creation</span>
+    </div>
+    <div class="app-create-column-name">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Column Title" [(ngModel)]="columnTitle">
+      </mat-form-field>
+    </div>
+    <div class="app-create-column-button">
+      <button mat-raised-button color="primary" (click)="createColumn()">Create</button>
+    </div>
+  </mat-card>
+</div>

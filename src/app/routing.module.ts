@@ -11,6 +11,7 @@ import {TeamsComponent} from './pages/teams/teams.component';
 import {CreateBoardComponent} from './pages/create-board/create-board.component';
 import {paths} from './constants';
 import {BoardComponent} from './pages/board/board.component';
+import {CreateColumnComponent} from './pages/create-column/create-column.component';
 
 const appRoutes: Routes = [
   {
@@ -32,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: paths.createBoard,
     component: CreateBoardComponent
+  },
+  {
+    path: `${paths.board}/:id/${paths.createColumn}`,
+    component: CreateColumnComponent
   },
   {
     path: paths.register,

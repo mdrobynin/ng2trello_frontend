@@ -5,7 +5,7 @@ import { Column } from '../../interfaces/implementations/Column';
 import { IColumn } from '../../interfaces/IColumn.interface';
 import { Subscription } from 'rxjs/Subscription';
 import { BoardService } from '../../services/board.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { paths } from '../../constants';
 
 @Component({
@@ -16,20 +16,32 @@ import { paths } from '../../constants';
 export class BoardComponent implements OnInit, OnDestroy  {
   public board: IBoard;
   private subscriptions: Subscription[] = [];
-  constructor(private boardsService: BoardService, private router: Router) { }
+  private boardId: number;
+    constructor(private boardsService: BoardService, private route: ActivatedRoute,
+                private router: Router) { }
 
   ngOnInit() {
-    this.board = new Board("example board");
-    this.board.ColumnIds = [1,2];
-    //this.getBoard();
+    this.getBoard();
   }
 
   private getBoard(): void {
-    const boardId = +this.router.url.split('/')[2];
-    const sub = this.boardsService.getBoardById(boardId).subscribe((board: IBoard) => {
+    const routeSub = this.route.params.subscribe(params => {
+      this.boardId = +params['id'];
+      this.getBoardById();
+    });
+    this.subscriptions.push(routeSub);
+  }
+
+  private getBoardById(): void {
+    const sub = this.boardsService.getBoardById(this.boardId).subscribe((board: IBoard) => {
       this.board = board;
+      console.log(this.board);
     });
     this.subscriptions.push(sub);
+  }
+
+  public redirectToColumnCreation(): void {
+    this.router.navigate([`${paths.board}/${this.boardId}/${paths.createColumn}`]);
   }
 
   ngOnDestroy(): void {
