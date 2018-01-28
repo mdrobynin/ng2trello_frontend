@@ -3,4 +3,5 @@ export interface IComment {
   UserId: number;
   Text: string;
   Data?: any;
+  CardId?: number;
 }

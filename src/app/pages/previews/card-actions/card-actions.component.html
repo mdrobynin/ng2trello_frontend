@@ -1,0 +1,6 @@
+<div class="app-card-actions">
+  <div class="app-card-actions-items" *ngIf="cardActions">
+    <app-card-action *ngFor="let cardAction of cardActions"
+                 [cardAction]="cardAction"></app-card-action>
+  </div>
+</div>

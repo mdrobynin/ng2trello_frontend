@@ -1,0 +1,16 @@
+.app-comment {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+
+  .app-comment-text {
+    flex: 0;
+  }
+  .app-comment-spacer {
+    flex: 1;
+  }
+  .app-comment-delete-button {
+    flex: 0;
+    font-size: 14px;
+  }
+}

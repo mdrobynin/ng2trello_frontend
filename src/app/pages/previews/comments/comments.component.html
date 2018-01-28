@@ -1,0 +1,15 @@
+<div class="app-comments">
+  <div class="app-comments-add-comment">
+    <mat-form-field>
+      <input matInput placeholder="Comment ..." [(ngModel)]="commentText">
+    </mat-form-field>
+    <button mat-icon-button (click)="addComment()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="app-comments-items" *ngIf="comments">
+    <app-comment *ngFor="let comment of comments"
+                 [comment]="comment"
+                 (deleted)="onDeleteComment($event)"></app-comment>
+  </div>
+</div>

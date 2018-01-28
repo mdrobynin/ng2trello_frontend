@@ -6,7 +6,7 @@
     <button mat-button color="accent" (click)="addCardHandler()"><mat-icon>add</mat-icon></button>
   </mat-card-content>
   <mat-card-content *ngIf="!!cards">
-    <app-card-preview *ngFor="let card of cards" [card]="card" (onDelete)="onCardDelete($event)"></app-card-preview>
+    <app-card-preview *ngFor="let card of cards" [card]="card" (cardDeleted)="onCardDelete($event)"></app-card-preview>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="deleteColumn()"><mat-icon>delete</mat-icon></button>

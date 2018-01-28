@@ -22,12 +22,14 @@ export class CardComponent implements OnInit, OnDestroy {
   public comments: IComment[] = [];
   private cardId: number;
   private subscriptions: Subscription[] = [];
+
   constructor(private router: Router,
               private cardActionsService: CardActionService,
               private commentsService: CommentService,
               private todoService: TodoService,
               private cardService: CardService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.getParams();
@@ -35,6 +37,14 @@ export class CardComponent implements OnInit, OnDestroy {
 
   public onAddTodo(): void {
     this.getTodolist();
+  }
+
+  public onCardActionsChanged(): void {
+    this.getCardActions();
+  }
+
+  public onCommentChange(): void {
+    this.getComments();
   }
 
   private getParams(): void {

@@ -8,10 +8,12 @@ import {ModalService} from '../../services/modal.service';
   templateUrl: './create-board.component.html',
   styleUrls: ['./create-board.component.scss']
 })
-export class CreateBoardComponent implements OnInit, OnDestroy  {
+export class CreateBoardComponent implements OnInit, OnDestroy {
   public boardTitle: string;
   private subscriptions: Subscription[] = [];
-  constructor(private modalService: ModalService) { }
+
+  constructor(private modalService: ModalService) {
+  }
 
   ngOnInit() {
 

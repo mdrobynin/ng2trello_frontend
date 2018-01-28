@@ -20,6 +20,10 @@ export class UsersService {
     return this.currentUser.asObservable();
   }
 
+  public getUser(): IUser {
+    return this.currentUser.getValue();
+  }
+
   public register(username: string, password: string): Observable<IStatusResponse> {
     const config = {
       body: { username, password},

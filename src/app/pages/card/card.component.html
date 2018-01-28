@@ -4,12 +4,21 @@
   </div>
   <div class="app-card-todo app-card-flex-column" *ngIf="todoList">
     <span>Todos:</span>
-    <app-todolist [todoList]="todoList" (todoChanged)="onAddTodo()"></app-todolist>
+    <app-todolist [cardId]="card.Id"
+                  [todoList]="todoList"
+                  (cardActionsChanged)="onCardActionsChanged()"
+                  (todoChanged)="onAddTodo()"></app-todolist>
   </div>
-  <div class="app-card-comments app-card-flex-column" *ngIf="comments">
+  <div class="app-card-comments app-card-flex-column"
+       *ngIf="comments && card">
     <span>Comments:</span>
+    <app-comments [cardId]="card.Id"
+                  [comments]="comments"
+                  (cardActionsChanged)="onCardActionsChanged()"
+                  (commentChanged)="onCommentChange()"></app-comments>
   </div>
   <div class="app-card-actions app-card-flex-column" *ngIf="cardActions">
     <span>Actions:</span>
+    <app-card-actions [cardActions]="cardActions"></app-card-actions>
   </div>
 </div>

@@ -19,6 +19,10 @@ import { CreateCardComponent } from './create-card/create-card.component';
 import { CardComponent } from './card/card.component';
 import { TodolistComponent } from './previews/todolist/todolist.component';
 import {TodoComponent} from './previews/todo/todo.component';
+import { CommentsComponent } from './previews/comments/comments.component';
+import { CommentComponent } from './previews/comment/comment.component';
+import { CardActionsComponent } from './previews/card-actions/card-actions.component';
+import { CardActionComponent } from './previews/card-action/card-action.component';
 
 @NgModule({
   imports: [
@@ -42,7 +46,11 @@ import {TodoComponent} from './previews/todo/todo.component';
     CreateCardComponent,
     CardComponent,
     TodolistComponent,
-    TodoComponent
+    TodoComponent,
+    CommentsComponent,
+    CommentComponent,
+    CardActionsComponent,
+    CardActionComponent
   ],
   exports: [
     ErrorComponent,

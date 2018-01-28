@@ -11,12 +11,12 @@ import {paths} from '../../../constants';
 })
 export class CardPreviewComponent implements OnInit, OnDestroy {
   @Input() public card: ICard;
-  @Output() public onDelete: EventEmitter<ICard> = new EventEmitter<ICard>();
+  @Output() public cardDeleted: EventEmitter<ICard> = new EventEmitter<ICard>();
   private subscriptions: Subscription[] = [];
   constructor(private router: Router) { }
 
   public deleteHandler(): void {
-    this.onDelete.emit(this.card);
+    this.cardDeleted.emit(this.card);
   }
 
   ngOnInit() {
