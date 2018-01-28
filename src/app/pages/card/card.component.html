@@ -3,7 +3,7 @@
     <span>{{card.Title}}</span>
   </div>
   <div class="app-card-todo app-card-flex-column" *ngIf="todoList">
-    <span>Todos:</span>
+    <span class="app-card-subtitle">Todos:</span>
     <app-todolist [cardId]="card.Id"
                   [todoList]="todoList"
                   (cardActionsChanged)="onCardActionsChanged()"
@@ -11,14 +11,14 @@
   </div>
   <div class="app-card-comments app-card-flex-column"
        *ngIf="comments && card">
-    <span>Comments:</span>
+    <span class="app-card-subtitle">Comments:</span>
     <app-comments [cardId]="card.Id"
                   [comments]="comments"
                   (cardActionsChanged)="onCardActionsChanged()"
                   (commentChanged)="onCommentChange()"></app-comments>
   </div>
   <div class="app-card-actions app-card-flex-column" *ngIf="cardActions">
-    <span>Actions:</span>
+    <span class="app-card-subtitle">Actions:</span>
     <app-card-actions [cardActions]="cardActions"></app-card-actions>
   </div>
 </div>
