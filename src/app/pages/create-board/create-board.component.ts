@@ -1,10 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BoardService} from '../../services/board.service';
 import {Subscription} from 'rxjs/Subscription';
-import {Router} from '@angular/router';
-import {IBoard} from '../../interfaces/IBoard.interface';
 import {Board} from '../../interfaces/implementations/Board';
-import {paths} from '../../constants';
+import {ModalService} from '../../services/modal.service';
 
 @Component({
   selector: 'app-create-board',
@@ -14,7 +11,7 @@ import {paths} from '../../constants';
 export class CreateBoardComponent implements OnInit, OnDestroy  {
   public boardTitle: string;
   private subscriptions: Subscription[] = [];
-  constructor(private boardsService: BoardService, private router: Router) { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
 
@@ -23,9 +20,8 @@ export class CreateBoardComponent implements OnInit, OnDestroy  {
   public createBoard(): void {
     if (this.boardTitle.length > 0) {
       const board = new Board(this.boardTitle);
-      this.boardsService.addBoard(board).subscribe(() => {
-        this.router.navigate(['/' + paths.boards]);
-      });
+      this.modalService.setResult(board);
+      this.modalService.hideModal();
     }
   }
 

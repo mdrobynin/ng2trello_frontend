@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Observable';
 export class ModalService {
   private result: BehaviorSubject<any> = new BehaviorSubject<any>({});
   private component: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
-  public visibility: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public visibility: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
+
   constructor() { }
 
   getResult(): Observable<any> {

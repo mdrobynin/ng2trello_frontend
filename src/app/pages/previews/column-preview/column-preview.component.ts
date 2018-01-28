@@ -4,10 +4,10 @@ import { ICard } from '../../../interfaces/ICard.interface';
 import { IColumn } from '../../../interfaces/IColumn.interface';
 import { ColumnService } from '../../../services/column.service';
 import { CardService } from '../../../services/card.service';
-import { Column } from '../../../interfaces/implementations/Column';
 import { Card } from '../../../interfaces/implementations/Card';
 import {ActivatedRoute, Router} from '@angular/router';
-import {paths} from '../../../constants';
+import {ModalService} from '../../../services/modal.service';
+import {CreateCardComponent} from '../../create-card/create-card.component';
 
 @Component({
   selector: 'app-column-preview',
@@ -19,30 +19,34 @@ export class ColumnPreviewComponent implements OnInit, OnDestroy {
   @Output() onDelete: EventEmitter<IColumn> = new EventEmitter<IColumn>();
   public column: IColumn;
   public cards: ICard[] = [];
+  private boardId: number;
+  private isCurrentColumnOpensModal: boolean;
   private subscriptions: Subscription[] = [];
   constructor(private columnService: ColumnService,
+              private modalService: ModalService,
               private router: Router, private route: ActivatedRoute,
               private cardService: CardService) {
   }
 
   ngOnInit() {
+    this.isCurrentColumnOpensModal = false;
+    this.listenResults();
+    this.getParams();
     this.getColumn();
   }
 
-  public onCardDelete(card: ICard): void {
-    this.cardService.deleteCard(card.Id).subscribe((res)=>{
-      if (!!res) {
-        this.getColumn();
-      }
-    });
+  public addCardHandler(): void {
+    this.isCurrentColumnOpensModal = true;
+    this.modalService.showModal(CreateCardComponent);
   }
 
-  public addCard(): void {
-    const routeSub = this.route.params.subscribe(params => {
-      const boardId = +params['id'];
-      this.router.navigate([`${paths.board}/${boardId}/${this.columnId}/${paths.createCard}`]);
+  public onCardDelete(card: ICard): void {
+    const delSub = this.cardService.deleteCard(card.Id).subscribe((res) => {
+      if (!!res) {
+        this.getCardsByColumnId();
+      }
     });
-    this.subscriptions.push(routeSub);
+    this.subscriptions.push(delSub);
   }
 
   public deleteColumn(): void {
@@ -52,6 +56,29 @@ export class ColumnPreviewComponent implements OnInit, OnDestroy {
       }
     });
     this.subscriptions.push(columnSub);
+  }
+
+  private listenResults(): void {
+    const sub = this.modalService.getResult().subscribe((res) => {
+      if (res instanceof Card) {
+        if (this.isCurrentColumnOpensModal) {
+          this.addCard(<ICard> res);
+          this.isCurrentColumnOpensModal = false;
+        }
+      }
+    });
+    this.subscriptions.push(sub);
+  }
+
+  private addCard(card: ICard): void {
+    card.BoardId = this.boardId;
+    card.ColumnId = this.columnId;
+    const sub = this.cardService.addCard(card).subscribe((res) => {
+      if (!!res) {
+        this.getCardsByColumnId();
+      }
+    });
+    this.subscriptions.push(sub);
   }
 
   private getColumn(): void {
@@ -71,6 +98,13 @@ export class ColumnPreviewComponent implements OnInit, OnDestroy {
       });
       this.subscriptions.push(cardsSub);
     }
+  }
+
+  private getParams(): void {
+    const routeSub = this.route.params.subscribe(params => {
+      this.boardId = +params['id'];
+    });
+    this.subscriptions.push(routeSub);
   }
 
   ngOnDestroy(): void {

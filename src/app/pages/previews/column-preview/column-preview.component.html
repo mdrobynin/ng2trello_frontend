@@ -3,7 +3,7 @@
     {{column.Title}}
   </mat-card-header>
   <mat-card-content>
-    <button mat-button color="accent" (click)="addCard()"><mat-icon>add</mat-icon></button>
+    <button mat-button color="accent" (click)="addCardHandler()"><mat-icon>add</mat-icon></button>
   </mat-card-content>
   <mat-card-content *ngIf="!!cards">
     <app-card-preview *ngFor="let card of cards" [card]="card" (onDelete)="onCardDelete($event)"></app-card-preview>

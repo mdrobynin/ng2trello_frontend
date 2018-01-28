@@ -19,6 +19,9 @@ import { FooterComponent } from './footer/footer.component';
     ModalComponent,
     NavbarComponent,
     FooterComponent
+  ],
+  entryComponents: [
+    ModalComponent
   ]
 })
 export class ComponentsModule { }

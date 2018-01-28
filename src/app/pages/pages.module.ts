@@ -52,6 +52,11 @@ import { CreateCardComponent } from './create-card/create-card.component';
     ColumnPreviewComponent,
     CreateColumnComponent,
     CreateCardComponent
+  ],
+  entryComponents: [
+    CreateColumnComponent,
+    CreateBoardComponent,
+    CreateCardComponent
   ]
 })
 export class PagesModule { }

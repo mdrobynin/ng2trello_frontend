@@ -1,3 +1,6 @@
-<div class="app-modal">
-  <ng-container #componentContainer></ng-container>
+<div class="app-modal" [ngClass]="{'no-display': !isVisible}">
+  <div class="app-modal-background" (click)="hideModal()"></div>
+  <div class="app-modal-content">
+    <template #placeholder></template>
+  </div>
 </div>

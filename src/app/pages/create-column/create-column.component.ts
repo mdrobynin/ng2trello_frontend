@@ -1,11 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ColumnService} from '../../services/column.service';
 import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute, Router} from '@angular/router';
-import {IColumn} from '../../interfaces/IColumn.interface';
 import {Column} from '../../interfaces/implementations/Column';
-import {IBoard} from '../../interfaces/IBoard.interface';
-import {paths} from '../../constants';
+import {ModalService} from '../../services/modal.service';
 
 @Component({
   selector: 'app-create-column',
@@ -17,31 +14,17 @@ export class CreateColumnComponent implements OnInit, OnDestroy  {
   private boardId: number;
   private subscriptions: Subscription[] = [];
   constructor(private columnService: ColumnService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+              private modalService: ModalService) { }
 
   ngOnInit() {
-    this.getParams();
   }
 
   public createColumn(): void {
     if (this.columnTitle.length > 0) {
       const column = new Column(this.columnTitle, this.boardId);
-      this.columnService.addColumn(column).subscribe(() => {
-        this.redirectToBoard();
-      });
+      this.modalService.setResult(column);
+      this.modalService.hideModal();
     }
-  }
-
-  private getParams(): void {
-    const routeSub = this.route.params.subscribe(params => {
-      this.boardId = +params['id'];
-    });
-    this.subscriptions.push(routeSub);
-  }
-
-  private redirectToBoard(): void {
-    this.router.navigate([`${paths.board}/${this.boardId}`]);
   }
 
   ngOnDestroy(): void {

@@ -19,9 +19,11 @@ export class BoardPreviewComponent implements OnInit, OnDestroy  {
 
   }
 
-  private deleteBoard(): void {
-    const sub = this.boardsService.deleteBoard(this.board.Id).subscribe(() => {
-      this.boardDeleted.emit(this.board);
+  public deleteBoard(): void {
+    const sub = this.boardsService.deleteBoard(this.board.Id).subscribe((res) => {
+      if (!!res) {
+        this.boardDeleted.emit(this.board);
+      }
     });
     this.subscriptions.push(sub);
   }

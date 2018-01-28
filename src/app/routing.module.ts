@@ -24,24 +24,12 @@ const appRoutes: Routes = [
     component: BoardComponent
   },
   {
-    path: `${paths.board}/:id/${paths.createColumn}`,
-    component: CreateColumnComponent
-  },
-  {
-    path: `${paths.board}/:id/:columnid/${paths.createCard}`,
-    component: CreateCardComponent
-  },
-  {
     path: paths.profile,
     component: ProfileComponent
   },
   {
     path: paths.login,
     component: LoginComponent
-  },
-  {
-    path: paths.createBoard,
-    component: CreateBoardComponent
   },
   {
     path: paths.register,
