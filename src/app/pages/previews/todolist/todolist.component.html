@@ -1,0 +1,16 @@
+<div class="app-todolist">
+  <div class="app-todolist-add-todo">
+    <mat-form-field>
+      <input matInput placeholder="What needs to be done ..." [(ngModel)]="todoText">
+    </mat-form-field>
+    <button mat-icon-button (click)="addTodo()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div class="app-todolist-todos" *ngIf="todoList">
+    <app-todo *ngFor="let todo of todoList.Todos"
+              [todo]="todo"
+              (deleted)="onDeleteTodo($event)"
+              (statusChanged)="onStatusChange($event)"></app-todo>
+  </div>
+</div>

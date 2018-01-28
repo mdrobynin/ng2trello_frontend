@@ -1,0 +1,17 @@
+<div class="app-todo">
+  <div class="app-todo-text">
+    {{todo.Text}}
+  </div>
+  <div class="app-todo-spacer">
+
+  </div>
+  <button mat-button *ngIf="todo.Status" (click)="onStatusChange()">
+    <mat-icon class="app-todo-delete-button">check</mat-icon>
+  </button>
+  <button mat-button *ngIf="!todo.Status" (click)="onStatusChange()">
+    <mat-icon class="app-todo-delete-button">indeterminate_check_box</mat-icon>
+  </button>
+  <button mat-button (click)="deleteHandler()">
+    <mat-icon class="app-todo-delete-button">delete</mat-icon>
+  </button>
+</div>

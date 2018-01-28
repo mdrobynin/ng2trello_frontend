@@ -1,0 +1,15 @@
+<div class="app-card app-card-flex-column">
+  <div class="app-card-title" *ngIf="card">
+    <span>{{card.Title}}</span>
+  </div>
+  <div class="app-card-todo app-card-flex-column" *ngIf="todoList">
+    <span>Todos:</span>
+    <app-todolist [todoList]="todoList" (todoChanged)="onAddTodo()"></app-todolist>
+  </div>
+  <div class="app-card-comments app-card-flex-column" *ngIf="comments">
+    <span>Comments:</span>
+  </div>
+  <div class="app-card-actions app-card-flex-column" *ngIf="cardActions">
+    <span>Actions:</span>
+  </div>
+</div>

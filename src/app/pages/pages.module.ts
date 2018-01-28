@@ -16,6 +16,9 @@ import { ColumnPreviewComponent } from './previews/column-preview/column-preview
 import { CardPreviewComponent } from './previews/card-preview/card-preview.component';
 import {CreateColumnComponent} from './create-column/create-column.component';
 import { CreateCardComponent } from './create-card/create-card.component';
+import { CardComponent } from './card/card.component';
+import { TodolistComponent } from './previews/todolist/todolist.component';
+import {TodoComponent} from './previews/todo/todo.component';
 
 @NgModule({
   imports: [
@@ -36,7 +39,10 @@ import { CreateCardComponent } from './create-card/create-card.component';
     ColumnPreviewComponent,
     CardPreviewComponent,
     CreateColumnComponent,
-    CreateCardComponent
+    CreateCardComponent,
+    CardComponent,
+    TodolistComponent,
+    TodoComponent
   ],
   exports: [
     ErrorComponent,
@@ -51,7 +57,10 @@ import { CreateCardComponent } from './create-card/create-card.component';
     BoardComponent,
     ColumnPreviewComponent,
     CreateColumnComponent,
-    CreateCardComponent
+    CreateCardComponent,
+    CardComponent,
+    TodolistComponent,
+    TodoComponent
   ],
   entryComponents: [
     CreateColumnComponent,

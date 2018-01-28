@@ -13,6 +13,7 @@ import { BoardService } from './board.service';
 import { CommentService } from './comment.service';
 import { ColumnService } from './column.service';
 import { CardService } from './card.service';
+import {CardActionService} from './card-action.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { CardService } from './card.service';
     BoardService,
     CommentService,
     ColumnService,
-    CardService
+    CardService,
+    CardActionService
   ]
 })
 export class ServicesModule { }

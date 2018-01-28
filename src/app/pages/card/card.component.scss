@@ -1,0 +1,29 @@
+.app-card-flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.app-card {
+  height: 100%;
+  width: 100%;
+
+  .app-card-title {
+    margin: 5px;
+    padding: 5px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+  }
+  .app-card-todo{
+
+  }
+  .app-card-comments{
+
+  }
+  .app-card-actions{
+
+  }
+}
+

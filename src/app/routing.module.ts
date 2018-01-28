@@ -13,6 +13,7 @@ import {paths} from './constants';
 import {BoardComponent} from './pages/board/board.component';
 import {CreateColumnComponent} from './pages/create-column/create-column.component';
 import {CreateCardComponent} from './pages/create-card/create-card.component';
+import {CardComponent} from './pages/card/card.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
   {
     path: `${paths.board}/:id`,
     component: BoardComponent
+  },
+  {
+    path: `${paths.card}/:id`,
+    component: CardComponent
   },
   {
     path: paths.profile,

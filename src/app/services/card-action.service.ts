@@ -39,7 +39,7 @@ export class CardActionService {
         const config = {
             url: `${environment.card}/${cardid}/${paths.cardActions}`
         }
-        return this.transport.post(config)
+        return this.transport.get(config)
             .map((res: HttpResponse<any>) => {
                 return <ICardAction[]>res.body;
             });

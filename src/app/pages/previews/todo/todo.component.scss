@@ -1,0 +1,16 @@
+.app-todo {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+
+  .app-todo-text {
+    flex: 0;
+  }
+  .app-todo-spacer {
+    flex: 1;
+  }
+  .app-todo-delete-button {
+    flex: 0;
+    font-size: 14px;
+  }
+}
