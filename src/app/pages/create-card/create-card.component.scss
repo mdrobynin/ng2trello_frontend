@@ -1,0 +1,27 @@
+.app-create-card-container {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .app-create-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .app-create-card-title {
+      font-size: 30px;
+      margin: 5px;
+    }
+    .app-create-card-name {
+      margin: 5px;
+    }
+    .app-create-card-button {
+      margin: 5px;
+    }
+  }
+}
+

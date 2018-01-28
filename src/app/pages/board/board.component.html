@@ -1,12 +1,13 @@
-<div class="app-board">
-  <div *ngIf="!!board" class="app-board-title">
+<div class="app-board"  *ngIf="!!board" >
+  <div class="app-board-title">
     {{board.Title}}
   </div>
-  <ng-template *ngIf="!!board">
+  <div class="app-board-columns-container">
     <app-column-preview
       *ngFor="let columnId of board.ColumnIds"
+      (onDelete)="refreshColumns()"
       [columnId]="columnId"></app-column-preview>
-  </ng-template>
+  </div>
   <div class="app-board-add-button">
     <button mat-fab (click)="redirectToColumnCreation()">
       <mat-icon>add</mat-icon>

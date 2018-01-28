@@ -2,16 +2,24 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
 
   .app-board-title {
-    width: 100%;
     margin: 5px;
     padding: 5px;
     font-size: 25px;
     display: flex;
     justify-content: center;
+  }
+
+  .app-board-columns-container{
+    overflow-y: auto;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   .app-board-add-button {

@@ -12,6 +12,7 @@ import {CreateBoardComponent} from './pages/create-board/create-board.component'
 import {paths} from './constants';
 import {BoardComponent} from './pages/board/board.component';
 import {CreateColumnComponent} from './pages/create-column/create-column.component';
+import {CreateCardComponent} from './pages/create-card/create-card.component';
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,14 @@ const appRoutes: Routes = [
   {
     path: `${paths.board}/:id`,
     component: BoardComponent
+  },
+  {
+    path: `${paths.board}/:id/${paths.createColumn}`,
+    component: CreateColumnComponent
+  },
+  {
+    path: `${paths.board}/:id/:columnid/${paths.createCard}`,
+    component: CreateCardComponent
   },
   {
     path: paths.profile,
@@ -33,10 +42,6 @@ const appRoutes: Routes = [
   {
     path: paths.createBoard,
     component: CreateBoardComponent
-  },
-  {
-    path: `${paths.board}/:id/${paths.createColumn}`,
-    component: CreateColumnComponent
   },
   {
     path: paths.register,

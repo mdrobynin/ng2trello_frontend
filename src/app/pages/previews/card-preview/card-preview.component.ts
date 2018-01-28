@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ICard } from '../../../interfaces/ICard.interface';
 
@@ -9,8 +9,13 @@ import { ICard } from '../../../interfaces/ICard.interface';
 })
 export class CardPreviewComponent implements OnInit, OnDestroy {
   @Input() public card: ICard;
+  @Output() public onDelete: EventEmitter<ICard> = new EventEmitter<ICard>();
   private subscriptions: Subscription[] = [];
   constructor() { }
+
+  public deleteHandler(): void {
+    this.onDelete.emit(this.card);
+  }
 
   ngOnInit() {
   }

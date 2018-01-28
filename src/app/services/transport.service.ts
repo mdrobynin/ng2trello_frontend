@@ -27,7 +27,7 @@ export class TransportService {
 
   public delete(config: any): Observable<HttpEvent<any>> {
     const headers = this.getHeaders();
-    const request: HttpRequest<any> = new HttpRequest<any>('DELETE', config.url, { headers });
+    const request: HttpRequest<any> = new HttpRequest<any>('DELETE', config.url, config.body, { headers });
     return this.http.request(request);
   }
 

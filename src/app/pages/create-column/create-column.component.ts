@@ -21,24 +21,23 @@ export class CreateColumnComponent implements OnInit, OnDestroy  {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-
+    this.getParams();
   }
 
   public createColumn(): void {
     if (this.columnTitle.length > 0) {
-      const routeSub = this.route.params.subscribe(params => {
-        this.boardId = +params['id'];
-        this.addColumn();
+      const column = new Column(this.columnTitle, this.boardId);
+      this.columnService.addColumn(column).subscribe(() => {
+        this.redirectToBoard();
       });
-      this.subscriptions.push(routeSub);
     }
   }
 
-  private addColumn(): void {
-    const column = new Column(this.columnTitle, this.boardId);
-    this.columnService.addColumn(column).subscribe(() => {
-      this.redirectToBoard();
+  private getParams(): void {
+    const routeSub = this.route.params.subscribe(params => {
+      this.boardId = +params['id'];
     });
+    this.subscriptions.push(routeSub);
   }
 
   private redirectToBoard(): void {
