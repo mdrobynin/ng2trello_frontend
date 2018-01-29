@@ -70,7 +70,7 @@ export class CardComponent implements OnInit, OnDestroy {
   private getCardActions(): void {
     const sub = this.cardActionsService.getCardActionsByCardId(this.cardId).subscribe((cardActions: ICardAction[]) => {
       if (!!cardActions) {
-        this.cardActions = cardActions;
+        this.cardActions = cardActions.reverse();
       }
     });
     this.subscriptions.push(sub);

@@ -3,6 +3,8 @@
     <button mat-button (click)="redirectToCard()">{{card.Title}}</button>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button (click)="deleteHandler()"><mat-icon class="app-card-delete-button">delete</mat-icon></button>
+    <button mat-icon-button (click)="deleteHandler()">
+      <mat-icon class="app-card-delete-button">delete</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

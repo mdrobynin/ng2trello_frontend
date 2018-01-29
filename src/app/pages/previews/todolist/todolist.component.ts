@@ -59,6 +59,9 @@ export class TodolistComponent implements OnInit, OnDestroy  {
     todo.Status = !todo.Status;
     const sub = this.todoService.changeTodo(this.todoList.Id, todo).subscribe((res) => {
       if (!!res) {
+        const cardAction = new CardAction(`Changed status at ${todo.Text} to ${todo.Status ? 'Done' : 'Not Done'}`,
+          this.cardId, this.userService.getUser().Id);
+        this.addCardAction(cardAction);
         this.todoChanged.emit(this.todoList);
       }
     });

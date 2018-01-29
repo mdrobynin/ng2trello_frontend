@@ -1,3 +1,18 @@
-<p>
-  profile works!
-</p>
+<div class="app-profile-container">
+  <mat-card class="app-profile">
+    <mat-card-header class="app-profile-header">
+      User Profile
+    </mat-card-header>
+    <div class="app-profile-avatar">
+      <img *ngIf="user && user.AvatarUrl" class="app-profile-avatar-image"
+           src="user.AvatarUrl" alt="avatar">
+      <img *ngIf="user && !user.AvatarUrl" class="app-profile-avatar-image"
+           src="/assets/avatar_placeholder.png" alt="avatar">
+    </div>
+    <mat-list *ngIf="user">
+      <mat-list-item>Username: {{user.Username}}</mat-list-item>
+      <mat-list-item>Role: {{user.Role}}</mat-list-item>
+      <mat-list-item>Email: {{user.Email}}</mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
