@@ -5,7 +5,7 @@
   <mat-card-content>
     <button mat-icon-button color="accent" (click)="addCardHandler()"><mat-icon>add</mat-icon></button>
   </mat-card-content>
-  <mat-card-content *ngIf="!!cards">
+  <mat-card-content *ngIf="!!cards" [dragula]='column.Title' [dragulaModel]='cards'>
     <app-card-preview *ngFor="let card of cards" [card]="card" (cardDeleted)="onCardDelete($event)"></app-card-preview>
   </mat-card-content>
   <mat-card-actions>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared.module';
+import { DragulaModule } from 'ng2-dragula';
 
 import { BoardsComponent } from './boards/boards.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +28,8 @@ import { CardActionComponent } from './previews/card-action/card-action.componen
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    DragulaModule
   ],
   declarations: [
     ErrorComponent,

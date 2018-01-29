@@ -1,37 +1,39 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IBoard } from '../../interfaces/IBoard.interface';
-import { Column } from '../../interfaces/implementations/Column';
-import { IColumn } from '../../interfaces/IColumn.interface';
-import { Subscription } from 'rxjs/Subscription';
-import { BoardService } from '../../services/board.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {IBoard} from '../../interfaces/IBoard.interface';
+import {Column} from '../../interfaces/implementations/Column';
+import {IColumn} from '../../interfaces/IColumn.interface';
+import {Subscription} from 'rxjs/Subscription';
+import {BoardService} from '../../services/board.service';
 import {ActivatedRoute, NavigationEnd, Router, RouterEvent} from '@angular/router';
 import {ModalService} from '../../services/modal.service';
 import {ColumnService} from '../../services/column.service';
 import {CreateColumnComponent} from '../create-column/create-column.component';
-import {ICard} from '../../interfaces/ICard.interface';
-import {Card} from '../../interfaces/implementations/Card';
 import {CardService} from '../../services/card.service';
+import { DragulaService } from 'ng2-dragula';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })
-export class BoardComponent implements OnInit, OnDestroy  {
+export class BoardComponent implements OnInit, OnDestroy {
   public board: IBoard;
   private subscriptions: Subscription[] = [];
   private boardId: number;
-    constructor(private boardsService: BoardService,
-                private columnService: ColumnService,
-                private cardService: CardService,
-                private route: ActivatedRoute,
-                private modalService: ModalService,
-                private router: Router) {
-      this.subscribeToRouteChange();
-    }
+
+  constructor(private boardsService: BoardService,
+              private columnService: ColumnService,
+              private cardService: CardService,
+              private route: ActivatedRoute,
+              private modalService: ModalService,
+              private router: Router,
+              private dragulaService: DragulaService) {
+    this.subscribeToRouteChange();
+  }
 
   ngOnInit() {
     this.listenResults();
+    this.listenDragEvents();
   }
 
   public refreshColumns(): void {
@@ -39,7 +41,6 @@ export class BoardComponent implements OnInit, OnDestroy  {
   }
 
   public redirectToColumnCreation(): void {
-    // this.router.navigate([`${paths.board}/${this.boardId}/${paths.createColumn}`]);
     this.modalService.showModal(CreateColumnComponent);
   }
 
@@ -52,6 +53,21 @@ export class BoardComponent implements OnInit, OnDestroy  {
     this.subscriptions.push(sub);
   }
 
+  private listenDragEvents(): void {
+    this.dragulaService.drag.subscribe((value) => {
+      console.log("onDrag",value);
+    });
+    this.dragulaService.drop.subscribe((value) => {
+      console.log("onDrop",value);
+    });
+    this.dragulaService.over.subscribe((value) => {
+      console.log("onOver",value);
+    });
+    this.dragulaService.out.subscribe((value) => {
+      console.log("onOut",value);
+    });
+  }
+
   private addColumn(column: IColumn): void {
     column.BoardId = this.boardId;
     const sub = this.columnService.addColumn(column).subscribe(() => {
@@ -62,10 +78,10 @@ export class BoardComponent implements OnInit, OnDestroy  {
 
   private subscribeToRouteChange(): void {
     const sub = this.router.events.subscribe((event: RouterEvent) => {
-        if (event instanceof NavigationEnd) {
-          this.getBoard();
-        }
-      });
+      if (event instanceof NavigationEnd) {
+        this.getBoard();
+      }
+    });
     this.subscriptions.push(sub);
   }
 
